@@ -1,0 +1,38 @@
+{% extends 'member/base.html' %}
+{% block content %}
+
+      <h1>Contacts</h1>
+
+      <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Tools</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for contact in object_list %}
+      <tr>
+      <td>{{ contact.name|title }}</td>
+      <td>{{ contact.email }}</td>
+      <td>{{ contact.address }}</td>
+      <td>
+        <a  class="btn btn-info" href="{% url 'contact_detail'  contact.id  %}">details</a>
+        <a class="btn btn-secondary" href="{% url 'contact_edit'  contact.id  %}">edit</a>
+        <a class="btn btn-danger" href="{% url 'contact_delete'  contact.id  %}">delete</a>
+      </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+      </table>
+      <br>
+      <a type="button" class="btn btn-outline-secondary" href="{% url 'contact_create'  %}">create new contact</a>
+      <a type="button" class="btn btn-outline-secondary" href="{% url 'home'  %}">Home</a>
+
+
+    </div>
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,19 @@
+<!-- templates/home.html -->
+{% extends 'member/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Welcome To Homepage!</h1>
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <br>
+  <a href="{% url 'contact_list'  %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">My Contacts</a>
+  <br> <br>
+  <p><a class="btn btn-outline-secondary" href="{% url 'logout' %}">Logout</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Login</a>
+  <a href="{% url 'signup' %}">Signup</a>
+{% endif %}
+{% endblock %}
